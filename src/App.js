@@ -255,33 +255,27 @@ const Portfolio = () => {
       image: '/portofolio-magang.webp' 
     },
     {
-      title: 'Strategi Kampanye Media Sosial',
+      title: 'Kampanye Visual Alat Medis: PT. Petra Gracia Kreasil',
       category: 'PROYEK MAGANG',
-      desc: 'Membantu merancang dan mengeksekusi kalender konten bulanan selama masa magang, yang berfokus pada peningkatan brand awareness dan interaksi audiens organik.',
+      desc: 'Merancang materi promosi digital untuk alat USG modern dari PGK. Proyek ini bertujuan untuk mengomunikasikan nilai keunggulan produk, yaitu kecepatan dan akurasi diagnostik, kepada audiens instansi kesehatan. Desain dibuat dengan pendekatan clean & professional menggunakan palet warna biru untuk membangun kepercayaan (trust) dan kredibilitas di mata profesional medis.',
       tags: ['Instagram', 'Copywriting', 'Canva'],
       image: '/portofolio-magang2.webp' 
     },
     {
-      title: 'Strategi Kampanye Media Sosial',
+      title: 'Kampanye Digital B2B: Tritonville Security Features',
       category: 'PROYEK MAGANG',
-      desc: 'Membantu merancang dan mengeksekusi kalender konten bulanan selama masa magang, yang berfokus pada peningkatan brand awareness dan interaksi audiens organik.',
+      desc: 'Bagian dari seri kampanye media sosial Tritonville. Desain dan copywriting ini difokuskan pada penanganan keraguan calon penyewa terkait keamanan aset. Mengangkat tiga pilar utama keamanan: Tim Profesional, CCTV 24 Jam, dan One Gate System. Pemilihan elemen visual seorang petugas keamanan bertujuan untuk memproyeksikan perlindungan, keandalan, dan memberikan rasa tenang (peace of mind) kepada calon klien.',
       tags: ['Instagram', 'Copywriting', 'Canva'],
       image: '/portofolio-magang3.webp' 
     },
-        {
-      title: 'Strategi Kampanye Media Sosial',
-      category: 'PROYEK MAGANG',
-      desc: 'Membantu merancang dan mengeksekusi kalender konten bulanan selama masa magang, yang berfokus pada peningkatan brand awareness dan interaksi audiens organik.',
-      tags: ['Instagram', 'Copywriting', 'Canva'],
-      image: '/portofolio-magang4.webp' 
-    },
-    {
-      title: 'Business Plan & Marketing Strategy',
-      category: 'PROYEK LOMBA',
-      desc: 'Menjadi peserta dalam kompetisi bisnis mahasiswa tingkat nasional. Merancang strategi go-to-market untuk sebuah ide produk inovatif ramah lingkungan.',
-      tags: ['Riset Pasar', 'Presentasi', 'Strategi Bisnis'],
-      image: '/portofolio-lomba.webp'
-    }
+// Tambahkan ini ke array 'projects' di komponen Portfolio
+{
+  title: 'Kampanye Keamanan B2B: Tritonville',
+  category: 'PROYEK MAGANG', 
+  desc: 'Desain dan copywriting kampanye media sosial yang menyoroti fasilitas keamanan gudang. Fokus pada penyelesaian kekhawatiran audiens B2B mengenai perlindungan aset melalui penyampaian pesan yang jelas dan persuasif.',
+  tags: ['B2B Marketing', 'Copywriting', 'Desain Konten'],
+  image: '/portofolio-magang4.webp' // Pastikan nama file sesuai di folder public
+}
   ];
 
   return (
