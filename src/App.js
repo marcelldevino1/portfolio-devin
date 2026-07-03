@@ -1,33 +1,33 @@
 import React, { useState, useEffect } from 'react';
 
-// Custom SVG Icons
+// Custom SVG Icons (PascalCase sesuai standar React)
 const Icons = {
-  menu: () => (
+  Menu: () => (
     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
     </svg>
   ),
-  mail: () => (
+  Mail: () => (
     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
     </svg>
   ),
-  call: () => (
+  Call: () => (
     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
     </svg>
   ),
-  share: () => (
+  Share: () => (
     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
     </svg>
   ),
-  star: () => (
+  Star: () => (
     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
     </svg>
   ),
-  close: () => (
+  Close: () => (
     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
     </svg>
@@ -81,8 +81,9 @@ const Navbar = () => {
         <button 
           className="md:hidden text-[#56f1c3]"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
         >
-          <Icons.menu />
+          <Icons.Menu />
         </button>
       </div>
 
@@ -211,12 +212,12 @@ const About = () => {
           
           <div className="grid grid-cols-2 gap-4">
             <div className="glass-card p-6 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-[#2dd4a8]/30 transition-all text-center">
-              <div className="text-[#56f1c3] flex justify-center mb-2"><Icons.star /></div>
+              <div className="text-[#56f1c3] flex justify-center mb-2"><Icons.Star /></div>
               <div className="text-white font-bold mb-1">Dedikasi Penuh</div>
               <div className="text-[#bbcac2] text-xs font-medium">Dalam Setiap Pembelajaran</div>
             </div>
             <div className="glass-card p-6 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-[#2dd4a8]/30 transition-all text-center">
-              <div className="text-[#56f1c3] flex justify-center mb-2"><Icons.star /></div>
+              <div className="text-[#56f1c3] flex justify-center mb-2"><Icons.Star /></div>
               <div className="text-white font-bold mb-1">Selalu Adaptif</div>
               <div className="text-[#bbcac2] text-xs font-medium">Terhadap Tren Baru</div>
             </div>
@@ -283,22 +284,20 @@ const Portfolio = () => {
       tags: ['Instagram', 'Copywriting', 'Canva'],
       image: '/portofolio-magang3.webp' 
     },
-// Tambahkan ini ke array 'projects' di komponen Portfolio
-{
-  title: 'Kampanye Keamanan B2B: Tritonville',
-  category: 'PROYEK MAGANG', 
-  desc: 'Desain dan copywriting kampanye media sosial yang menyoroti fasilitas keamanan gudang. Fokus pada penyelesaian kekhawatiran audiens B2B mengenai perlindungan aset melalui penyampaian pesan yang jelas dan persuasif.',
-  tags: ['B2B Marketing', 'Copywriting', 'Desain Konten'],
-  image: '/portofolio-magang4.webp' // Pastikan nama file sesuai di folder public
-},
-
-{
-  title: 'Konten Edukasi B2B: Layanan IoT Rekret IT Solution',
-  category: 'PROYEK MAGANG', 
-  desc: 'Merancang materi media sosial untuk memperkenalkan layanan integrasi Internet of Things (IoT). Tantangan utama dalam proyek ini adalah menyederhanakan bahasa teknis menjadi copywriting yang menonjolkan solusi praktis bagi pebisnis (seperti manajemen energi dan pemantauan jarak jauh). Desain menggunakan ilustrasi gaya flat dipadu warna identitas brand untuk memberi kesan IT yang modern dan mudah didekati (approachable).',
-  tags: ['B2B Marketing', 'Copywriting', 'Desain Konten'],
-  image: '/portofolio-magang5.webp' // Pastikan nama file sesuai di folder public
-}
+    {
+      title: 'Kampanye Keamanan B2B: Tritonville',
+      category: 'PROYEK MAGANG', 
+      desc: 'Desain dan copywriting kampanye media sosial yang menyoroti fasilitas keamanan gudang. Fokus pada penyelesaian kekhawatiran audiens B2B mengenai perlindungan aset melalui penyampaian pesan yang jelas dan persuasif.',
+      tags: ['B2B Marketing', 'Copywriting', 'Desain Konten'],
+      image: '/portofolio-magang4.webp'
+    },
+    {
+      title: 'Konten Edukasi B2B: Layanan IoT Rekret IT Solution',
+      category: 'PROYEK MAGANG', 
+      desc: 'Merancang materi media sosial untuk memperkenalkan layanan integrasi Internet of Things (IoT). Tantangan utama dalam proyek ini adalah menyederhanakan bahasa teknis menjadi copywriting yang menonjolkan solusi praktis bagi pebisnis (seperti manajemen energi dan pemantauan jarak jauh). Desain menggunakan ilustrasi gaya flat dipadu warna identitas brand untuk memberi kesan IT yang modern dan mudah didekati (approachable).',
+      tags: ['B2B Marketing', 'Copywriting', 'Desain Konten'],
+      image: '/portofolio-magang5.webp'
+    }
   ];
 
   return (
@@ -365,14 +364,17 @@ const Portfolio = () => {
         <div 
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm cursor-zoom-out animate-fadeIn"
           onClick={() => setSelectedImage(null)}
+          role="dialog"
+          aria-modal="true"
         >
           <div className="relative max-w-5xl w-full max-h-[90vh] flex items-center justify-center">
             {/* Tombol Close */}
             <button 
               className="absolute -top-12 right-0 md:-right-12 md:top-0 text-white hover:text-[#56f1c3] transition-colors p-2"
               onClick={() => setSelectedImage(null)}
+              aria-label="Close modal"
             >
-              <Icons.close />
+              <Icons.Close />
             </button>
             
             {/* Gambar Full Size */}
@@ -380,7 +382,7 @@ const Portfolio = () => {
               src={selectedImage} 
               alt="Gambar Full Proyek" 
               className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl cursor-default"
-              onClick={(e) => e.stopPropagation()} // Mencegah klik gambar menutup modal
+              onClick={(e) => e.stopPropagation()}
               onError={(e) => {
                 e.target.src = 'https://placehold.co/1200x800/131313/56f1c3?text=Foto+Proyek+Full';
               }}
@@ -484,7 +486,7 @@ const Contact = () => {
           <div className="space-y-6">
             <div className="flex items-center gap-4 group">
               <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-[#56f1c3] group-hover:bg-[#56f1c3]/10 transition-colors">
-                <Icons.mail />
+                <Icons.Mail />
               </div>
               <div>
                 <div className="text-[#bbcac2] text-xs font-medium uppercase">Email</div>
@@ -494,7 +496,7 @@ const Contact = () => {
 
             <div className="flex items-center gap-4 group">
               <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-[#56f1c3] group-hover:bg-[#56f1c3]/10 transition-colors">
-                <Icons.call />
+                <Icons.Call />
               </div>
               <div>
                 <div className="text-[#bbcac2] text-xs font-medium uppercase">Telepon / WhatsApp</div>
@@ -504,7 +506,7 @@ const Contact = () => {
 
             <div className="flex items-center gap-4 group">
               <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-[#56f1c3] group-hover:bg-[#56f1c3]/10 transition-colors">
-                <Icons.share />
+                <Icons.Share />
               </div>
               <div>
                 <div className="text-[#bbcac2] text-xs font-medium uppercase">Instagram</div>
@@ -517,8 +519,9 @@ const Contact = () => {
         <div className="glass-card p-10 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-[#bbcac2] text-xs font-medium uppercase mb-2">Nama Lengkap</label>
+              <label className="block text-[#bbcac2] text-xs font-medium uppercase mb-2" htmlFor="name">Nama Lengkap</label>
               <input 
+                id="name"
                 type="text"
                 className="w-full bg-[#131313] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#56f1c3] transition-colors"
                 placeholder="Masukkan nama Anda"
@@ -529,8 +532,9 @@ const Contact = () => {
             </div>
             
             <div>
-              <label className="block text-[#bbcac2] text-xs font-medium uppercase mb-2">Alamat Email</label>
+              <label className="block text-[#bbcac2] text-xs font-medium uppercase mb-2" htmlFor="email">Alamat Email</label>
               <input 
+                id="email"
                 type="email"
                 className="w-full bg-[#131313] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#56f1c3] transition-colors"
                 placeholder="email@contoh.com"
@@ -541,8 +545,9 @@ const Contact = () => {
             </div>
             
             <div>
-              <label className="block text-[#bbcac2] text-xs font-medium uppercase mb-2">Pesan</label>
+              <label className="block text-[#bbcac2] text-xs font-medium uppercase mb-2" htmlFor="message">Pesan</label>
               <textarea 
+                id="message"
                 rows="4"
                 className="w-full bg-[#131313] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#56f1c3] transition-colors resize-none"
                 placeholder="Apa yang ingin Anda bicarakan?"
@@ -574,8 +579,8 @@ const Footer = () => (
         © 2024 Devin Ahmad Alfarezi. Terus belajar dan berkembang.
       </p>
       <div className="flex items-center gap-6 justify-center">
-        <a href="#" className="text-[#bbcac2] hover:text-[#56f1c3] transition-colors text-sm">LinkedIn</a>
-        <a href="#" className="text-[#bbcac2] hover:text-[#56f1c3] transition-colors text-sm">Instagram</a>
+        <a href="#!" className="text-[#bbcac2] hover:text-[#56f1c3] transition-colors text-sm">LinkedIn</a>
+        <a href="#!" className="text-[#bbcac2] hover:text-[#56f1c3] transition-colors text-sm">Instagram</a>
       </div>
     </div>
   </footer>
