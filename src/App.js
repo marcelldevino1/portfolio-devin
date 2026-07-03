@@ -275,6 +275,14 @@ const Portfolio = () => {
   desc: 'Desain dan copywriting kampanye media sosial yang menyoroti fasilitas keamanan gudang. Fokus pada penyelesaian kekhawatiran audiens B2B mengenai perlindungan aset melalui penyampaian pesan yang jelas dan persuasif.',
   tags: ['B2B Marketing', 'Copywriting', 'Desain Konten'],
   image: '/portofolio-magang4.webp' // Pastikan nama file sesuai di folder public
+},
+
+{
+  title: 'Konten Edukasi B2B: Layanan IoT Rekret IT Solution',
+  category: 'PROYEK MAGANG', 
+  desc: 'Merancang materi media sosial untuk memperkenalkan layanan integrasi Internet of Things (IoT). Tantangan utama dalam proyek ini adalah menyederhanakan bahasa teknis menjadi copywriting yang menonjolkan solusi praktis bagi pebisnis (seperti manajemen energi dan pemantauan jarak jauh). Desain menggunakan ilustrasi gaya flat dipadu warna identitas brand untuk memberi kesan IT yang modern dan mudah didekati (approachable).',
+  tags: ['B2B Marketing', 'Copywriting', 'Desain Konten'],
+  image: '/portofolio-magang5.webp' // Pastikan nama file sesuai di folder public
 }
   ];
 
