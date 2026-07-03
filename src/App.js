@@ -297,6 +297,13 @@ const Portfolio = () => {
       desc: 'Merancang materi media sosial untuk memperkenalkan layanan integrasi Internet of Things (IoT). Tantangan utama dalam proyek ini adalah menyederhanakan bahasa teknis menjadi copywriting yang menonjolkan solusi praktis bagi pebisnis (seperti manajemen energi dan pemantauan jarak jauh). Desain menggunakan ilustrasi gaya flat dipadu warna identitas brand untuk memberi kesan IT yang modern dan mudah didekati (approachable).',
       tags: ['B2B Marketing', 'Copywriting', 'Desain Konten'],
       image: '/portofolio-magang5.webp'
+    },
+    {
+      title: 'Produksi Video Kampanye: "Langkah yang Sama"',
+      category: 'PROYEK LOMBA', 
+      desc: 'Memproduksi materi visual dan kampanye video untuk proyek lomba bertema persatuan. Karya ini menonjolkan kutipan inspiratif mengenai kebersamaan dengan pendekatan gaya visual sinematik. Fokus utama proyek ini ada pada penyampaian pesan emosional melalui ekspresi talenta dan tata letak tipografi yang tegas, bertujuan untuk menggugah semangat solidaritas generasi muda sejalan dengan visi Indonesia Maju.',
+      tags: ['CopyWriting', 'Canva', 'Desain'],
+      image: '/portofolio-magang6.webp'
     }
   ];
 
