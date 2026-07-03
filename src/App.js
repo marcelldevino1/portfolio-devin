@@ -56,7 +56,7 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 w-full z-50 bg-[#131313]/50 backdrop-blur-xl border-b border-white/10 h-20 shadow-sm transition-all duration-300 ${scrolled ? 'bg-[#131313]/95' : ''}`}>
       <div className="flex justify-between items-center w-full px-8 md:px-8 max-w-7xl mx-auto h-full">
-        <span className="font-semibold text-xl text-[#56f1c3]">Devin Ahmad A.</span>
+        <span className="font-semibold text-xl text-[#56f1c3]">Devin Ahmad Alfarezi</span>
         
         {/* Menu Desktop */}
         <div className="hidden md:flex items-center space-x-8">
@@ -120,12 +120,12 @@ const Hero = () => (
       {/* Bagian Teks (Kiri) */}
       <div className="text-left flex flex-col justify-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#56f1c3]/10 border border-[#56f1c3]/20 mb-6 w-max">
-          <span className="text-[#56f1c3] text-sm font-medium">👋 Halo, selamat datang!</span>
+          <span className="text-[#56f1c3] text-sm font-medium">Halo, selamat datang!</span>
         </div>
         
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 tracking-tighter leading-tight">
           Halo, Saya <br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#56f1c3] to-[#4fdbc8]">Devin Ahmad</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#56f1c3] to-[#4fdbc8]">Devin Ahmad Alfarezi</span>
         </h1>
         
         <p className="text-lg md:text-xl text-[#bbcac2] max-w-lg mb-10 leading-relaxed">
@@ -148,32 +148,47 @@ const Hero = () => (
         </div>
       </div>
 
-      {/* Bagian Foto Profil (Kanan) */}
-      <div className="hidden lg:flex justify-center relative items-center">
-        <div className="relative w-80 h-96">
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#56f1c3] to-[#4fdbc8] rounded-3xl rotate-6 opacity-20 blur-lg animate-pulse"></div>
-          
-          <div className="absolute inset-0 bg-[#131313] border border-[#56f1c3]/30 rounded-3xl -rotate-3 overflow-hidden shadow-2xl transition-transform hover:rotate-0 duration-500">
-            <img 
-              src="/profile.png" 
-              alt="Foto Devin Ahmad" 
-              className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
-              onError={(e) => {
-                e.target.src = 'https://placehold.co/400x500/131313/56f1c3?text=Foto+Profil';
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#131313] via-[#131313]/20 to-transparent"></div>
-            
-            <div className="absolute bottom-6 w-full text-center px-4">
-              <p className="text-[#56f1c3] font-semibold text-lg drop-shadow-md">Digital Marketer</p>
-              <p className="text-white text-sm drop-shadow-md">Dalam Masa Berkembang</p>
+      {/* PENGGANTI FOTO PROFIL - Kartu Statistik */}
+      <div className="relative flex items-center justify-center">
+        <div className="relative w-full max-w-md">
+          {/* Kartu Utama */}
+          <div className="glass-card p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-[#2dd4a8]/30 transition-all">
+            <div className="text-center mb-6">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-[#56f1c3] to-[#4fdbc8] mb-4">
+                <span className="text-3xl font-bold text-[#00382a]">D</span>
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-2">Digital Marketing</h3>
+              <p className="text-[#bbcac2] text-sm">Enthusiast & Content Creator</p>
+            </div>
+
+            {/* Statistik */}
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              <div className="text-center p-4 rounded-xl bg-[#131313]/50 border border-white/5">
+                <div className="text-3xl font-bold text-[#56f1c3] mb-1">5+</div>
+                <div className="text-xs text-[#bbcac2]">Proyek Selesai</div>
+              </div>
+              <div className="text-center p-4 rounded-xl bg-[#131313]/50 border border-white/5">
+                <div className="text-3xl font-bold text-[#56f1c3] mb-1">2+</div>
+                <div className="text-xs text-[#bbcac2]">Tahun Belajar</div>
+              </div>
+            </div>
+
+            {/* Skill Tags */}
+            <div className="flex flex-wrap gap-2 justify-center">
+              {['SEO', 'Social Media', 'Copywriting', 'Content Strategy'].map((skill, idx) => (
+                <span 
+                  key={idx}
+                  className="px-3 py-1.5 bg-[#56f1c3]/10 border border-[#56f1c3]/20 text-[#56f1c3] text-xs font-medium rounded-full"
+                >
+                  {skill}
+                </span>
+              ))}
             </div>
           </div>
 
-          <div className="absolute -bottom-2 -left-10 bg-[#131313] border border-[#56f1c3]/30 p-4 rounded-xl shadow-xl flex items-center gap-3 animate-bounce" style={{ animationDuration: '3s' }}>
-            <div className="w-3 h-3 bg-[#56f1c3] rounded-full animate-ping"></div>
-            <span className="text-[#bbcac2] text-sm font-medium">Terbuka untuk Magang</span>
-          </div>
+          {/* Elemen Dekoratif Floating */}
+          <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#56f1c3]/20 rounded-full blur-2xl animate-pulse"></div>
+          <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-[#4fdbc8]/20 rounded-full blur-2xl animate-pulse"></div>
         </div>
       </div>
     </div>
