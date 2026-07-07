@@ -249,18 +249,35 @@ const About = () => {
 };
 
 // Bagian Portofolio (Dengan Fitur Pop-Up Modal Full Image)
+// Bagian Portofolio (Dengan Fitur Pop-Up Modal untuk Gambar & Video YouTube)
 const Portfolio = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null); // Bisa gambar atau video
 
   // Mencegah scroll pada background ketika pop-up terbuka
   useEffect(() => {
-    if (selectedImage) {
+    if (selectedItem) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
     return () => { document.body.style.overflow = 'auto'; };
-  }, [selectedImage]);
+  }, [selectedItem]);
+
+  // Fungsi untuk extract video ID dari YouTube URL
+  const getYouTubeId = (url) => {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+  };
+
+  // Fungsi untuk convert YouTube URL ke embed URL
+  const convertToEmbedUrl = (url) => {
+    const videoId = getYouTubeId(url);
+    if (videoId) {
+      return `https://www.youtube.com/embed/${videoId}`;
+    }
+    return url;
+  };
 
   const projects = [
     {
@@ -268,6 +285,7 @@ const Portfolio = () => {
       category: 'PROYEK MAGANG',
       desc: 'Merancang materi promosi digital untuk Tritonville (Kawasan Industri & Gudang) selama masa magang. Desain visual ini difokuskan pada penyampaian 3 Unique Selling Proposition (USP) utama: efisiensi biaya operasional, percepatan distribusi, dan peningkatan produktivitas. Penggunaan warna merah yang kontras dan elemen visual pekerja konstruksi bertujuan untuk menarik perhatian audiens B2B dan membangun rasa percaya.',
       tags: ['Instagram', 'Copywriting', 'Canva'],
+      type: 'image', // Default untuk gambar
       image: '/portofolio-magang.webp' 
     },
     {
@@ -275,6 +293,7 @@ const Portfolio = () => {
       category: 'PROYEK MAGANG',
       desc: 'Merancang materi promosi digital untuk alat USG modern dari PGK. Proyek ini bertujuan untuk mengomunikasikan nilai keunggulan produk, yaitu kecepatan dan akurasi diagnostik, kepada audiens instansi kesehatan. Desain dibuat dengan pendekatan clean & professional menggunakan palet warna biru untuk membangun kepercayaan (trust) dan kredibilitas di mata profesional medis.',
       tags: ['Instagram', 'Copywriting', 'Canva'],
+      type: 'image',
       image: '/portofolio-magang2.webp' 
     },
     {
@@ -282,6 +301,7 @@ const Portfolio = () => {
       category: 'PROYEK MAGANG',
       desc: 'Bagian dari seri kampanye media sosial Tritonville. Desain dan copywriting ini difokuskan pada penanganan keraguan calon penyewa terkait keamanan aset. Mengangkat tiga pilar utama keamanan: Tim Profesional, CCTV 24 Jam, dan One Gate System. Pemilihan elemen visual seorang petugas keamanan bertujuan untuk memproyeksikan perlindungan, keandalan, dan memberikan rasa tenang (peace of mind) kepada calon klien.',
       tags: ['Instagram', 'Copywriting', 'Canva'],
+      type: 'image',
       image: '/portofolio-magang3.webp' 
     },
     {
@@ -289,6 +309,7 @@ const Portfolio = () => {
       category: 'PROYEK MAGANG', 
       desc: 'Desain dan copywriting kampanye media sosial yang menyoroti fasilitas keamanan gudang. Fokus pada penyelesaian kekhawatiran audiens B2B mengenai perlindungan aset melalui penyampaian pesan yang jelas dan persuasif.',
       tags: ['B2B Marketing', 'Copywriting', 'Desain Konten'],
+      type: 'image',
       image: '/portofolio-magang4.webp'
     },
     {
@@ -296,15 +317,18 @@ const Portfolio = () => {
       category: 'PROYEK MAGANG', 
       desc: 'Merancang materi media sosial untuk memperkenalkan layanan integrasi Internet of Things (IoT). Tantangan utama dalam proyek ini adalah menyederhanakan bahasa teknis menjadi copywriting yang menonjolkan solusi praktis bagi pebisnis (seperti manajemen energi dan pemantauan jarak jauh). Desain menggunakan ilustrasi gaya flat dipadu warna identitas brand untuk memberi kesan IT yang modern dan mudah didekati (approachable).',
       tags: ['B2B Marketing', 'Copywriting', 'Desain Konten'],
+      type: 'image',
       image: '/portofolio-magang5.webp'
     },
     {
       title: 'Produksi Video Kampanye: "Langkah yang Sama"',
       category: 'PROYEK LOMBA', 
       desc: 'Memproduksi materi visual dan kampanye video untuk proyek lomba bertema persatuan. Karya ini menonjolkan kutipan inspiratif mengenai kebersamaan dengan pendekatan gaya visual sinematik. Fokus utama proyek ini ada pada penyampaian pesan emosional melalui ekspresi talenta dan tata letak tipografi yang tegas, bertujuan untuk menggugah semangat solidaritas generasi muda sejalan dengan visi Indonesia Maju.',
-      tags: ['CopyWriting', 'Canva', 'Desain'],
-      image: '/portofolio-magang6.webp'
-    }
+      tags: ['CopyWriting', 'Canva', 'Desain', 'Video Production'],
+      type: 'video', // Tipe video
+      videoUrl: 'https://youtu.be/HyGeA5hXAUo?si=VZsvsy_smFDMj33L', // GANTI dengan link YouTube Anda
+      thumbnail: '/portofolio-magang6.webp' // Thumbnail untuk preview
+    },
   ];
 
   return (
@@ -324,27 +348,62 @@ const Portfolio = () => {
             >
               <div className="relative h-64 overflow-hidden">
                 <img 
-                  src={project.image}
+                  src={project.type === 'video' ? project.thumbnail : project.image}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   onError={(e) => {
                     e.target.src = 'https://placehold.co/600x400/131313/56f1c3?text=Foto+Proyek';
                   }}
                 />
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <button 
-                    onClick={() => setSelectedImage(project.image)}
-                    className="px-6 py-2 bg-[#56f1c3] text-[#00382a] font-bold rounded-lg transform translate-y-4 group-hover:translate-y-0 transition-transform"
-                  >
-                    Lihat Detail
-                  </button>
-                </div>
+                
+                {/* Overlay untuk Video */}
+                {project.type === 'video' && (
+                  <div className="absolute inset-0 bg-black/40">
+                    {/* Play Button di Tengah */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-full bg-[#56f1c3]/90 flex items-center justify-center transform transition-transform group-hover:scale-110 shadow-lg">
+                        <svg className="w-8 h-8 text-[#00382a] ml-1" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                
+                {/* Overlay untuk Gambar (Normal) */}
+                {project.type !== 'video' && (
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <button 
+                      onClick={() => setSelectedItem(project)}
+                      className="px-6 py-2 bg-[#56f1c3] text-[#00382a] font-bold rounded-lg transform translate-y-4 group-hover:translate-y-0 transition-transform"
+                    >
+                      Lihat Detail
+                    </button>
+                  </div>
+                )}
+                
                 {/* Tag Kategori Utama */}
-                <div className="absolute top-4 left-4 z-10">
+                <div className="absolute top-4 left-4 z-10 flex gap-2">
                   <span className="bg-[#00382a]/80 text-[#56f1c3] border border-[#56f1c3]/50 px-4 py-1.5 rounded-full text-xs font-bold uppercase backdrop-blur-md shadow-lg">
                     {project.category}
                   </span>
+                  {project.type === 'video' && (
+                    <span className="bg-red-500/80 text-white border border-red-400/50 px-3 py-1.5 rounded-full text-xs font-bold uppercase backdrop-blur-md shadow-lg flex items-center gap-1">
+                      <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                      </svg>
+                      VIDEO
+                    </span>
+                  )}
                 </div>
+
+                {/* Click handler untuk video */}
+                {project.type === 'video' && (
+                  <div 
+                    className="absolute inset-0 cursor-pointer"
+                    onClick={() => setSelectedItem(project)}
+                  ></div>
+                )}
               </div>
               
               <div className="p-8 flex-1 flex flex-col">
@@ -366,34 +425,54 @@ const Portfolio = () => {
         </div>
       </div>
 
-      {/* Pop-Up Modal Image */}
-      {selectedImage && (
+      {/* Pop-Up Modal untuk Gambar atau Video */}
+      {selectedItem && (
         <div 
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm cursor-zoom-out animate-fadeIn"
-          onClick={() => setSelectedImage(null)}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 backdrop-blur-sm cursor-zoom-out animate-fadeIn"
+          onClick={() => setSelectedItem(null)}
           role="dialog"
           aria-modal="true"
         >
-          <div className="relative max-w-5xl w-full max-h-[90vh] flex items-center justify-center">
+          <div className="relative max-w-6xl w-full flex items-center justify-center">
             {/* Tombol Close */}
             <button 
-              className="absolute -top-12 right-0 md:-right-12 md:top-0 text-white hover:text-[#56f1c3] transition-colors p-2"
-              onClick={() => setSelectedImage(null)}
+              className="absolute -top-12 right-0 md:-right-12 md:top-0 text-white hover:text-[#56f1c3] transition-colors p-2 z-10 bg-black/50 rounded-full"
+              onClick={() => setSelectedItem(null)}
               aria-label="Close modal"
             >
               <Icons.Close />
             </button>
             
-            {/* Gambar Full Size */}
-            <img 
-              src={selectedImage} 
-              alt="Gambar Full Proyek" 
-              className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl cursor-default"
-              onClick={(e) => e.stopPropagation()}
-              onError={(e) => {
-                e.target.src = 'https://placehold.co/1200x800/131313/56f1c3?text=Foto+Proyek+Full';
-              }}
-            />
+            {/* Modal untuk Video YouTube */}
+            {selectedItem.type === 'video' ? (
+              <div className="w-full max-w-5xl">
+                <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl">
+                  <iframe
+                    src={convertToEmbedUrl(selectedItem.videoUrl)}
+                    className="w-full h-full"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    title={selectedItem.title}
+                  ></iframe>
+                </div>
+                <div className="mt-4 text-center">
+                  <h3 className="text-xl font-semibold text-white mb-2">{selectedItem.title}</h3>
+                  <p className="text-[#bbcac2] text-sm">{selectedItem.desc}</p>
+                </div>
+              </div>
+            ) : (
+              /* Modal untuk Gambar */
+              <img 
+                src={selectedItem.image} 
+                alt={selectedItem.title} 
+                className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl cursor-default"
+                onClick={(e) => e.stopPropagation()}
+                onError={(e) => {
+                  e.target.src = 'https://placehold.co/1200x800/131313/56f1c3?text=Foto+Proyek+Full';
+                }}
+              />
+            )}
           </div>
         </div>
       )}
